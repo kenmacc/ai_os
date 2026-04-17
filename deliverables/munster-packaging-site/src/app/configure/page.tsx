@@ -6,6 +6,7 @@ import CategorySelector from '@/components/configurator/CategorySelector'
 import ConfigFields from '@/components/configurator/ConfigFields'
 import PriceSummary from '@/components/configurator/PriceSummary'
 import LogoUpload from '@/components/configurator/LogoUpload'
+import ProductVisualizer from '@/components/configurator/ProductVisualizer'
 import { getCategoryById } from '@/data/products'
 import { calculatePrice } from '@/lib/pricing'
 import { useCartStore } from '@/lib/cart-store'
@@ -25,6 +26,7 @@ function ConfigureContent() {
   const [price, setPrice]             = useState<PriceBreakdown | null>(null)
   const [added, setAdded]             = useState(false)
   const [logo, setLogo]               = useState<string | null>(null)
+  const [showVisualizer, setShowVisualizer] = useState(false)
 
   const category = categoryId ? getCategoryById(categoryId) : null
 
@@ -53,6 +55,7 @@ function ConfigureContent() {
     setFieldValues({})
     setErrors({})
     setPrice(null)
+    setShowVisualizer(false)
   }
 
   const handleFieldChange = (id: string, value: string | number) => {
@@ -122,23 +125,48 @@ function ConfigureContent() {
       )}
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-stretch">
-        {/* Left: category selector */}
+        {/* Left: category selector or 3D visualizer */}
         <div className="flex flex-col">
           <div className="card flex flex-col flex-1 p-6">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">1</span>
-              <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Product Type</span>
-            </div>
-            <div className="flex-1 overflow-y-auto">
-              <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
-            </div>
-            <div className="mt-6 border-t border-gray-100 pt-5">
-              <LogoUpload
-                logo={logo}
-                onLogoChange={setLogo}
-                printRequired={!!(fieldValues.print && fieldValues.print !== 'plain')}
+            {isComplete && showVisualizer && category ? (
+              <ProductVisualizer
+                categoryId={categoryId!}
+                categoryName={category.name}
+                fields={fieldValues}
+                onBack={() => setShowVisualizer(false)}
               />
-            </div>
+            ) : (
+              <>
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">1</span>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Product Type</span>
+                  </div>
+                  {isComplete && (
+                    <button
+                      onClick={() => setShowVisualizer(true)}
+                      className="flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700 transition"
+                    >
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.641 0-8.573-3.007-9.964-7.178Z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      </svg>
+                      Preview 3D
+                    </button>
+                  )}
+                </div>
+                <div className="flex-1 overflow-y-auto">
+                  <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
+                </div>
+                <div className="mt-6 border-t border-gray-100 pt-5">
+                  <LogoUpload
+                    logo={logo}
+                    onLogoChange={setLogo}
+                    printRequired={!!(fieldValues.print && fieldValues.print !== 'plain')}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
 
