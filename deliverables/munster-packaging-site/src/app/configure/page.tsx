@@ -154,6 +154,8 @@ function ConfigureContent() {
           <PriceSummary
             price={price}
             quantity={quantity}
+            categoryId={categoryId}
+            fields={fieldValues}
             onQuantityChange={setQuantity}
             onAddToCart={handleAddToCart}
             isComplete={isComplete}

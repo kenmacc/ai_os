@@ -1,15 +1,25 @@
 import { formatPrice } from '@/lib/pricing'
-import type { PriceBreakdown } from '@/types'
+import { calculatePallets } from '@/lib/pallets'
+import type { PriceBreakdown, CategoryId, FieldValues } from '@/types'
 
 interface Props {
   price: PriceBreakdown | null
   quantity: number
+  categoryId: CategoryId | null
+  fields: FieldValues
   onQuantityChange: (q: number) => void
   onAddToCart: () => void
   isComplete: boolean
 }
 
-export default function PriceSummary({ price, quantity, onQuantityChange, onAddToCart, isComplete }: Props) {
+export default function PriceSummary({
+  price, quantity, categoryId, fields,
+  onQuantityChange, onAddToCart, isComplete
+}: Props) {
+  const pallets = isComplete && categoryId
+    ? calculatePallets(categoryId, fields, quantity)
+    : null
+
   return (
     <div className="card sticky top-24 p-6">
       <h3 className="font-semibold text-gray-900">Price Summary</h3>
@@ -57,6 +67,32 @@ export default function PriceSummary({ price, quantity, onQuantityChange, onAddT
           </p>
         )}
       </div>
+
+      {/* Pallet estimate */}
+      {pallets && (
+        <div className="mt-4 rounded-xl bg-gray-50 border border-gray-200 p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <svg className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+            </svg>
+            <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">Pallet Estimate</span>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="text-center rounded-lg bg-white border border-gray-200 px-3 py-2">
+              <p className="text-2xl font-black text-brand-700">{pallets.palletsNeeded}</p>
+              <p className="text-xs text-gray-500">Pallets needed</p>
+            </div>
+            <div className="text-center rounded-lg bg-white border border-gray-200 px-3 py-2">
+              <p className="text-2xl font-black text-gray-800">{pallets.unitsPerPallet.toLocaleString()}</p>
+              <p className="text-xs text-gray-500">Units per pallet</p>
+            </div>
+          </div>
+          <div className="mt-3 flex justify-between text-xs text-gray-400">
+            <span>{pallets.unitsPerLayer} per layer × {pallets.stackLayers} layers</span>
+            <span>1200×800mm base</span>
+          </div>
+        </div>
+      )}
 
       {/* Add to cart */}
       <button
