@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import CategorySelector from '@/components/configurator/CategorySelector'
 import ConfigFields from '@/components/configurator/ConfigFields'
 import PriceSummary from '@/components/configurator/PriceSummary'
+import LogoUpload from '@/components/configurator/LogoUpload'
 import { getCategoryById } from '@/data/products'
 import { calculatePrice } from '@/lib/pricing'
 import { useCartStore } from '@/lib/cart-store'
@@ -23,6 +24,7 @@ function ConfigureContent() {
   const [errors, setErrors]           = useState<Record<string, string>>({})
   const [price, setPrice]             = useState<PriceBreakdown | null>(null)
   const [added, setAdded]             = useState(false)
+  const [logo, setLogo]               = useState<string | null>(null)
 
   const category = categoryId ? getCategoryById(categoryId) : null
 
@@ -92,6 +94,7 @@ function ConfigureContent() {
       quantity,
       unitCost: price.unitCost,
       total: price.total,
+      ...(logo ? { logoDataUrl: logo } : {}),
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 2500)
@@ -128,6 +131,9 @@ function ConfigureContent() {
             </div>
             <div className="flex-1 overflow-y-auto">
               <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
+            </div>
+            <div className="mt-6 border-t border-gray-100 pt-5">
+              <LogoUpload logo={logo} onLogoChange={setLogo} />
             </div>
           </div>
         </div>

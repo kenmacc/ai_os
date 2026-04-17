@@ -75,6 +75,7 @@ export interface CartItem {
   unitCost: number
   total: number
   addedAt: number          // timestamp
+  logoDataUrl?: string
 }
 
 // ─── Order ────────────────────────────────────────────────────────────────────
