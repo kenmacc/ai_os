@@ -31,6 +31,18 @@ export default function ConfigFields({ fields, values, onChange, errors }: Props
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
+          ) : field.type === 'dimension' && field.presets ? (
+            <select
+              id={field.id}
+              value={String(values[field.id] ?? '')}
+              onChange={e => onChange(field.id, e.target.value === '' ? '' : Number(e.target.value))}
+              className={clsx('input', errors[field.id] && 'border-red-400 focus:border-red-400 focus:ring-red-400/20')}
+            >
+              <option value="">— Select {field.unit ?? 'size'} —</option>
+              {field.presets.map(p => (
+                <option key={p} value={p}>{p} {field.unit}</option>
+              ))}
+            </select>
           ) : (
             <input
               id={field.id}

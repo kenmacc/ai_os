@@ -29,6 +29,7 @@ export interface ConfigField {
   min?: number
   max?: number
   options?: SelectOption[] // for 'select' type
+  presets?: number[]       // for 'dimension' type — renders a dropdown
   required: boolean
 }
 

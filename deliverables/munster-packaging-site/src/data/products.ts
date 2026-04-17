@@ -15,15 +15,18 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'length', label: 'Length', type: 'dimension', unit: 'mm',
-        min: 50, max: 2000, required: true
+        min: 50, max: 2000, required: true,
+        presets: [50,75,100,125,150,175,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'width', label: 'Width', type: 'dimension', unit: 'mm',
-        min: 50, max: 2000, required: true
+        min: 50, max: 2000, required: true,
+        presets: [50,75,100,125,150,175,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'height', label: 'Height', type: 'dimension', unit: 'mm',
-        min: 50, max: 2000, required: true
+        min: 50, max: 2000, required: true,
+        presets: [50,75,100,125,150,175,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'material', label: 'Wall Type', type: 'select', required: true,
@@ -52,11 +55,13 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'boxLength', label: 'Box Length', type: 'dimension', unit: 'mm',
-        min: 50, max: 2000, required: true
+        min: 50, max: 2000, required: true,
+        presets: [50,75,100,125,150,175,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'boxWidth', label: 'Box Width', type: 'dimension', unit: 'mm',
-        min: 50, max: 2000, required: true
+        min: 50, max: 2000, required: true,
+        presets: [50,75,100,125,150,175,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'cellRows', label: 'Rows', type: 'number',
@@ -84,15 +89,18 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'length', label: 'Length', type: 'dimension', unit: 'mm',
-        min: 10, max: 2000, required: true
+        min: 10, max: 2000, required: true,
+        presets: [10,20,50,75,100,150,200,250,300,350,400,500,600,700,800,1000,1200,1500,2000]
       },
       {
         id: 'width', label: 'Width', type: 'dimension', unit: 'mm',
-        min: 10, max: 2000, required: true
+        min: 10, max: 2000, required: true,
+        presets: [10,20,50,75,100,150,200,250,300,350,400,500,600,700,800,1000,1200,1500,2000]
       },
       {
         id: 'depth', label: 'Depth / Thickness', type: 'dimension', unit: 'mm',
-        min: 5, max: 500, required: true
+        min: 5, max: 500, required: true,
+        presets: [5,10,15,20,25,30,40,50,75,100,150,200,250,300,400,500]
       },
       {
         id: 'type', label: 'Type', type: 'select', required: true,
@@ -113,11 +121,13 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'width', label: 'Roll Width', type: 'dimension', unit: 'mm',
-        min: 100, max: 2000, required: true
+        min: 100, max: 2000, required: true,
+        presets: [100,150,200,300,400,500,600,750,1000,1200,1500,2000]
       },
       {
         id: 'length', label: 'Roll Length', type: 'dimension', unit: 'm',
-        min: 1, max: 500, required: true
+        min: 1, max: 500, required: true,
+        presets: [10,25,50,75,100,150,200,300,500]
       },
       {
         id: 'bubble', label: 'Bubble Size', type: 'select', required: true,
@@ -137,11 +147,13 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'width', label: 'Roll Width', type: 'dimension', unit: 'mm',
-        min: 100, max: 1000, required: true
+        min: 100, max: 1000, required: true,
+        presets: [100,150,200,300,400,500,600,750,1000]
       },
       {
         id: 'length', label: 'Roll Length', type: 'dimension', unit: 'm',
-        min: 50, max: 1000, required: true
+        min: 50, max: 1000, required: true,
+        presets: [50,100,150,200,300,400,500,750,1000]
       },
       {
         id: 'micron', label: 'Thickness', type: 'select', required: true,
@@ -162,11 +174,13 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'length', label: 'Length', type: 'dimension', unit: 'mm',
-        min: 200, max: 3000, required: true
+        min: 200, max: 3000, required: true,
+        presets: [600,800,1000,1100,1200,1400,1600,1800,2000,2200,2400,2600,3000]
       },
       {
         id: 'width', label: 'Width', type: 'dimension', unit: 'mm',
-        min: 200, max: 3000, required: true
+        min: 200, max: 3000, required: true,
+        presets: [600,800,1000,1100,1200,1400,1600,1800,2000,2200,2400,2600,3000]
       },
       {
         id: 'material', label: 'Material', type: 'select', required: true,
@@ -213,15 +227,18 @@ export const CATEGORIES: ProductCategory[] = [
     fields: [
       {
         id: 'length', label: 'Width', type: 'dimension', unit: 'mm',
-        min: 100, max: 2000, required: true
+        min: 100, max: 2000, required: true,
+        presets: [100,150,200,250,300,400,500,600,700,800,900,1000,1200,1500,2000]
       },
       {
         id: 'depth', label: 'Depth', type: 'dimension', unit: 'mm',
-        min: 100, max: 1000, required: true
+        min: 100, max: 1000, required: true,
+        presets: [100,150,200,250,300,400,500,600,700,800,1000]
       },
       {
         id: 'height', label: 'Height', type: 'dimension', unit: 'mm',
-        min: 100, max: 3000, required: true
+        min: 100, max: 3000, required: true,
+        presets: [200,300,400,500,600,700,800,900,1000,1200,1500,1800,2000,2500,3000]
       },
       {
         id: 'type', label: 'Display Type', type: 'select', required: true,
