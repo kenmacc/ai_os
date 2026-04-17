@@ -133,7 +133,11 @@ function ConfigureContent() {
               <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
             </div>
             <div className="mt-6 border-t border-gray-100 pt-5">
-              <LogoUpload logo={logo} onLogoChange={setLogo} />
+              <LogoUpload
+                logo={logo}
+                onLogoChange={setLogo}
+                printRequired={!!(fieldValues.print && fieldValues.print !== 'plain')}
+              />
             </div>
           </div>
         </div>
