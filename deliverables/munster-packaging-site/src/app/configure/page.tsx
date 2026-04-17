@@ -16,7 +16,7 @@ function ConfigureContent() {
   const addItem = useCartStore(s => s.addItem)
 
   const [categoryId, setCategoryId]   = useState<CategoryId | null>(
-    (searchParams.get('category') as CategoryId) ?? null
+    (searchParams.get('category') as CategoryId) ?? 'boxes'
   )
   const [fieldValues, setFieldValues] = useState<FieldValues>({})
   const [quantity, setQuantity]       = useState(100)
@@ -118,19 +118,22 @@ function ConfigureContent() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* Left: category + fields */}
-        <div className="space-y-8 lg:col-span-2">
-          {/* Step 1: Category */}
-          <div className="card p-6">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-stretch">
+        {/* Left: category selector */}
+        <div className="flex flex-col">
+          <div className="card flex flex-col flex-1 p-6">
             <div className="mb-2 flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">1</span>
               <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Product Type</span>
             </div>
-            <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
+            <div className="flex-1 overflow-y-auto">
+              <CategorySelector selected={categoryId} onSelect={handleCategoryChange} />
+            </div>
           </div>
+        </div>
 
-          {/* Step 2: Fields */}
+        {/* Right: spec fields + price summary */}
+        <div className="flex flex-col gap-6">
           {category && (
             <div className="card p-6">
               <div className="mb-4 flex items-center gap-2">
@@ -147,10 +150,7 @@ function ConfigureContent() {
               />
             </div>
           )}
-        </div>
-
-        {/* Right: price summary */}
-        <div>
+          <div className="flex-1" />
           <PriceSummary
             price={price}
             quantity={quantity}
