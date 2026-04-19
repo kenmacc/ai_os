@@ -93,10 +93,11 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
+    const items = body.items ?? []
     const order: Order = {
       contact:     body.contact,
-      items:       body.items,
-      subtotal:    body.subtotal,
+      items,
+      subtotal:    items.reduce((sum: number, i: { total: number }) => sum + (i.total ?? 0), 0),
       currency:    body.currency ?? 'EUR',
       submittedAt: new Date().toISOString(),
     }
@@ -122,15 +123,20 @@ export async function POST(req: NextRequest) {
     const toEmail   = process.env.ORDER_EMAIL_TO   ?? 'orders@munsterpkg.ie'
     const fromEmail = process.env.ORDER_EMAIL_FROM ?? 'noreply@munsterpkg.ie'
 
+    console.log('[orders] Sending order notification to:', toEmail)
+    console.log('[orders] Sending from:', fromEmail)
+
     // Notification to Munster Packaging team
-    await transporter.sendMail({
+    const orderResult = await transporter.sendMail({
       from:    `"Munster Packaging Orders" <${fromEmail}>`,
       to:      toEmail,
       subject: `New Order from ${order.contact.name} — ${formatPrice(order.subtotal)}`,
       html:    buildEmailHtml(order),
     })
+    console.log('[orders] Order notification sent, messageId:', orderResult.messageId)
 
     // Confirmation to customer
+    console.log('[orders] Sending customer confirmation to:', order.contact.email)
     await transporter.sendMail({
       from:    `"Munster Packaging" <${fromEmail}>`,
       to:      order.contact.email,

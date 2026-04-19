@@ -14,7 +14,8 @@ const EMPTY: OrderContact = {
 
 export default function CheckoutPage() {
   const router = useRouter()
-  const { items, subtotal, clearCart } = useCartStore()
+  const { items, clearCart } = useCartStore()
+  const subtotal = items.reduce((sum, i) => sum + i.total, 0)
   const [contact, setContact] = useState<OrderContact>(EMPTY)
   const [errors, setErrors]   = useState<Partial<OrderContact>>({})
   const [loading, setLoading] = useState(false)
