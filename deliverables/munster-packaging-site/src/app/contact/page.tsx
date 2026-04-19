@@ -137,7 +137,7 @@ export default function ContactPage() {
               style={{ border: 0 }}
               loading="lazy"
               allowFullScreen
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-placeholder&q=Enterprise+Centre,Hospital,Co.+Limerick,Ireland"
+              src="https://maps.google.com/maps?q=Munster+Packaging+Ltd,Enterprise+Centre,Hospital,Co.+Limerick,V35+EP80,Ireland&output=embed"
             />
             <div className="bg-gray-50 px-4 py-2 text-xs text-gray-500">
               Enterprise Centre, Hospital, Co. Limerick, V35 EP80
