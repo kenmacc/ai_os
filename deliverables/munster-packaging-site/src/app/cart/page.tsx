@@ -6,7 +6,8 @@ import { formatPrice } from '@/lib/pricing'
 import { getCategoryById } from '@/data/products'
 
 export default function CartPage() {
-  const { items, removeItem, updateQuantity, subtotal } = useCartStore()
+  const { items, removeItem, updateQuantity } = useCartStore()
+  const subtotal = items.reduce((sum, i) => sum + i.total, 0)
 
   if (items.length === 0) {
     return (
