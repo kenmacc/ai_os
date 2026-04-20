@@ -11,7 +11,7 @@ type OrderRow = {
   contact_phone: string
   contact_company: string
   contact_notes: string
-  items: { categoryName: string; quantity: number; total: number; fields: Record<string, string> }[]
+  items: { categoryName: string; quantity: number; total: number; fields: Record<string, string>; logoDataUrl?: string }[]
   subtotal: number
   currency: string
   status: 'new' | 'quoted' | 'confirmed' | 'completed' | 'cancelled'
@@ -260,6 +260,27 @@ export default function AdminPage() {
                           </span>
                         ))}
                       </div>
+                      {item.logoDataUrl && (
+                        <div className="mt-3 border-t border-gray-100 pt-3">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Artwork / Logo</p>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.logoDataUrl}
+                            alt="Customer artwork"
+                            className="max-h-32 rounded-lg border border-gray-200 bg-gray-50 object-contain p-2"
+                          />
+                          <a
+                            href={item.logoDataUrl}
+                            download="artwork.png"
+                            className="mt-2 inline-flex items-center gap-1.5 text-xs text-brand-600 hover:underline"
+                          >
+                            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            </svg>
+                            Download artwork
+                          </a>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
