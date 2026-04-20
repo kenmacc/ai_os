@@ -1,0 +1,263 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Header from '@/components/Header'
+import LeadModal from '@/components/LeadModal'
+
+const experiences = [
+  {
+    title: 'Padel Courts',
+    description: '6 glass-backed championship courts with professional lighting and spectator seating.',
+    icon: '🎾',
+  },
+  {
+    title: 'Recovery Zone',
+    description: 'Ice baths, infrared saunas, contrast therapy, and guided recovery sessions.',
+    icon: '❄️',
+  },
+  {
+    title: 'Village Bar & Kitchen',
+    description: 'Post-match fuel — performance nutrition, craft drinks, and social dining.',
+    icon: '🍽️',
+  },
+  {
+    title: 'Work Lounge',
+    description: 'High-speed wifi, private booths, and meeting rooms for members who work between sessions.',
+    icon: '💼',
+  },
+  {
+    title: 'Corporate Events',
+    description: 'Private court hire, team tournaments, and bespoke corporate packages.',
+    icon: '🏆',
+  },
+  {
+    title: 'Community Events',
+    description: 'Leagues, social nights, coaching clinics, and member-exclusive competitions.',
+    icon: '🎉',
+  },
+]
+
+export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setModalOpen(true), 6000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  return (
+    <>
+      <Header onJoinClick={() => setModalOpen(true)} />
+      <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+
+      {/* HERO */}
+      <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#243250_0%,_#1B273D_60%,_#111928_100%)]" />
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px)' }}
+        />
+        <div className="relative z-10 flex flex-col items-center">
+          <Image src="/pv-logo.png" alt="Padel Village" width={160} height={80} className="object-contain mb-10" />
+          <p className="section-label mb-4">Play • Social • Recover</p>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite max-w-4xl leading-none">
+            Where Champions<br /><span className="text-gold">Come Together</span>
+          </h1>
+          <p className="mt-6 text-lg text-offwhite/60 max-w-xl">
+            Cork&apos;s premier indoor padel, social and wellness destination — opening Q4 2027.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <button onClick={() => setModalOpen(true)} className="btn-primary">
+              Claim Your Free Hour
+            </button>
+            <a href="#experience" className="btn-outline">
+              Explore the Village
+            </a>
+          </div>
+          <p className="mt-8 text-xs text-offwhite/30 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
+        </div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg className="h-6 w-6 text-gold/50" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+          </svg>
+        </div>
+      </section>
+
+      {/* WAITLIST STRIP */}
+      <section className="bg-gold py-5 px-6">
+        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm font-bold uppercase tracking-widest text-navy text-center sm:text-left">
+            Early access is open — secure your <span className="underline">free hour of padel</span> today
+          </p>
+          <button onClick={() => setModalOpen(true)} className="btn-navy shrink-0 py-3 text-xs">
+            Join the Waitlist
+          </button>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-24 px-6 bg-offwhite">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="section-label mb-3">About Padel Village</p>
+            <h2 className="section-heading mb-6">More Than a<br />Sports Club</h2>
+            <p className="text-navy/70 leading-relaxed mb-4">
+              Padel Village is being built from the ground up as Cork&apos;s definitive sport, social, and wellness hub. Not just courts — a destination where you play, recover, connect, and come back.
+            </p>
+            <p className="text-navy/70 leading-relaxed mb-8">
+              Whether you&apos;re a seasoned player or picking up a racket for the first time, Padel Village is designed for you. World-class facilities, an unmatched social atmosphere, and a community that keeps you coming back.
+            </p>
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-stone">
+              {[['6', 'Padel Courts'], ['1', 'Village Bar'], ['∞', 'Community']].map(([num, label]) => (
+                <div key={label}>
+                  <div className="text-3xl font-bold text-gold">{num}</div>
+                  <div className="text-xs uppercase tracking-widest text-navy/50 mt-1">{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative aspect-square flex items-center justify-center overflow-hidden" style={{ background: '#111928' }}>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#243250_0%,_#111928_100%)]" />
+            <div className="relative z-10 text-center px-8">
+              <p className="text-6xl font-bold text-gold mb-2">Q4</p>
+              <p className="text-7xl font-bold text-offwhite">2027</p>
+              <p className="mt-4 text-xs uppercase tracking-widest text-offwhite/40">Opening — Cork, Ireland</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PILLARS */}
+      <section className="py-24 px-6 bg-navy">
+        <div className="mx-auto max-w-7xl text-center mb-16">
+          <p className="section-label mb-3">The Three Pillars</p>
+          <h2 className="section-heading-light">Play. Social. Recover.</h2>
+        </div>
+        <div className="mx-auto max-w-7xl grid md:grid-cols-3 gap-px bg-gold/20">
+          {[
+            {
+              label: 'Play',
+              heading: 'World-Class Padel',
+              body: '6 glass-backed championship courts with pro lighting, coaching programmes, and competitive leagues for all levels.',
+            },
+            {
+              label: 'Social',
+              heading: 'The Village Bar',
+              body: 'Post-match drinks, live sport, performance nutrition, and a social scene built around the game you love.',
+            },
+            {
+              label: 'Recover',
+              heading: 'Premium Wellness',
+              body: 'Ice baths, infrared saunas, contrast therapy, and guided recovery sessions — so you can play more, recover faster.',
+            },
+          ].map(({ label, heading, body }) => (
+            <div key={label} className="bg-navy p-10 flex flex-col items-start">
+              <span className="section-label mb-4">{label}</span>
+              <h3 className="text-xl font-bold uppercase tracking-wide text-offwhite mb-3">{heading}</h3>
+              <p className="text-offwhite/50 text-sm leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* EXPERIENCE GRID */}
+      <section id="experience" className="py-24 px-6 bg-offwhite">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <p className="section-label mb-3">The Full Experience</p>
+            <h2 className="section-heading">Everything Under One Roof</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {experiences.map(({ title, description, icon }) => (
+              <div key={title} className="bg-white border border-stone p-8 group hover:border-gold transition-colors">
+                <div className="text-3xl mb-4">{icon}</div>
+                <h3 className="text-base font-bold uppercase tracking-wide text-navy mb-2">{title}</h3>
+                <p className="text-sm text-navy/60 leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CORPORATE */}
+      <section id="corporate" className="py-24 px-6 bg-navy">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="section-label mb-3">Corporate & Events</p>
+            <h2 className="section-heading-light mb-6">Build Your Team<br />On Court</h2>
+            <p className="text-offwhite/60 leading-relaxed mb-4">
+              Padel Village offers private court hire, bespoke corporate tournaments, and team-building experiences designed for companies who want something different.
+            </p>
+            <p className="text-offwhite/60 leading-relaxed mb-8">
+              From exclusive venue hire to full-day packages with catering and recovery sessions, we&apos;ll build the perfect experience for your team.
+            </p>
+            <button onClick={() => setModalOpen(true)} className="btn-primary">
+              Register Your Interest
+            </button>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[['Private Court Hire', 'Exclusive access for your team'], ['Team Tournaments', 'Organised competition with prizes'], ['Catering Packages', 'Village Bar menus & drinks'], ['Recovery Sessions', 'Guided post-event wellness']].map(([t, d]) => (
+              <div key={t} className="bg-navy-800 border border-gold/20 p-6">
+                <div className="w-2 h-2 bg-gold mb-4" />
+                <h4 className="text-sm font-bold uppercase tracking-wide text-offwhite mb-1">{t}</h4>
+                <p className="text-xs text-offwhite/40">{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Q4 2027 CTA */}
+      <section className="py-24 px-6 bg-gold">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-navy/50 mb-3">Opening Q4 2027</p>
+          <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-navy mb-6">
+            Get In First.<br />Play For Free.
+          </h2>
+          <p className="text-navy/70 mb-8 max-w-lg mx-auto">
+            Join the waitlist now and we&apos;ll give you 1 free hour of padel when we open. No obligation — just early access and the best seat in the village.
+          </p>
+          <button onClick={() => setModalOpen(true)} className="btn-navy">
+            Claim Your Free Hour
+          </button>
+        </div>
+      </section>
+
+      {/* CONTACT / FOOTER */}
+      <footer id="contact" className="bg-navy-900 py-16 px-6">
+        <div className="mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-offwhite/10">
+          <div className="lg:col-span-2">
+            <Image src="/pv-logo.png" alt="Padel Village" width={120} height={60} className="object-contain mb-4" />
+            <p className="text-sm text-offwhite/40 max-w-xs leading-relaxed">
+              Cork&apos;s premier indoor padel, social and wellness destination. Opening Q4 2027.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
+                <li key={item}>
+                  <a href={`#${item.toLowerCase()}`} className="text-sm text-offwhite/40 hover:text-gold transition">{item}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-4">Get in Touch</h4>
+            <p className="text-sm text-offwhite/40 leading-relaxed">
+              Cork, Ireland<br />
+              <a href="mailto:hello@padelvillage.ie" className="hover:text-gold transition">hello@padelvillage.ie</a>
+            </p>
+            <button onClick={() => setModalOpen(true)} className="btn-outline mt-6 py-3 text-xs">
+              Join Waitlist
+            </button>
+          </div>
+        </div>
+        <div className="mx-auto max-w-7xl pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-offwhite/20">© 2027 Padel Village. All rights reserved.</p>
+          <p className="text-xs text-offwhite/20">Play • Social • Recover</p>
+        </div>
+      </footer>
+    </>
+  )
+}
