@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import type { Order } from '@/types'
 import { formatPrice } from '@/lib/pricing'
 import { getCategoryById } from '@/data/products'
-import { supabase } from '@/lib/supabase'
+import { supabaseServer } from '@/lib/supabase-server'
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 // Set these in your .env.local:
@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Save to Supabase ──────────────────────────────────────────────────────
-    const { error: dbError } = await supabase.from('orders').insert({
+    const { error: dbError } = await supabaseServer.from('orders').insert({
       contact_name:    order.contact.name,
       contact_email:   order.contact.email,
       contact_phone:   order.contact.phone ?? null,

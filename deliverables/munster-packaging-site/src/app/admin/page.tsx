@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabase'
 import { formatPrice } from '@/lib/pricing'
 
 type OrderRow = {
@@ -41,16 +40,18 @@ export default function AdminPage() {
 
   async function fetchOrders() {
     setLoading(true)
-    const { data } = await supabase
-      .from('orders')
-      .select('*')
-      .order('submitted_at', { ascending: false })
-    setOrders(data ?? [])
+    const res = await fetch('/api/admin/orders')
+    const data = await res.json()
+    setOrders(Array.isArray(data) ? data : [])
     setLoading(false)
   }
 
   async function updateStatus(id: string, status: string) {
-    await supabase.from('orders').update({ status }).eq('id', id)
+    await fetch('/api/admin/orders', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status }),
+    })
     setOrders(prev => prev.map(o => o.id === id ? { ...o, status: status as OrderRow['status'] } : o))
     if (selected?.id === id) setSelected(prev => prev ? { ...prev, status: status as OrderRow['status'] } : null)
   }
