@@ -94,11 +94,36 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    const items = body.items ?? []
+    // ── Upload logos to Supabase Storage ─────────────────────────────────────
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rawItems: any[] = body.items ?? []
+    const items = await Promise.all(rawItems.map(async item => {
+      if (!item.logoDataUrl || !item.logoDataUrl.startsWith('data:')) return item
+      try {
+        const [meta, b64] = item.logoDataUrl.split(',')
+        const mimeMatch = meta.match(/data:([^;]+)/)
+        const mime = mimeMatch?.[1] ?? 'image/png'
+        const ext  = mime.split('/')[1]?.replace('jpeg','jpg') ?? 'png'
+        const buffer = Buffer.from(b64, 'base64')
+        const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+        const { error: upErr } = await supabaseServer.storage
+          .from('artwork')
+          .upload(path, buffer, { contentType: mime, upsert: false })
+        if (upErr) { console.error('[orders] Logo upload error:', upErr.message); return item }
+        const { data: signedData } = await supabaseServer.storage
+          .from('artwork')
+          .createSignedUrl(path, 60 * 60 * 24 * 365) // 1 year
+        return { ...item, logoDataUrl: undefined, logoUrl: signedData?.signedUrl ?? null, logoPath: path }
+      } catch (e) {
+        console.error('[orders] Logo processing error:', e)
+        return item
+      }
+    }))
+
     const order: Order = {
       contact:     body.contact,
       items,
-      subtotal:    items.reduce((sum: number, i: { total: number }) => sum + (i.total ?? 0), 0),
+      subtotal:    items.reduce((sum: number, i: { total?: number }) => sum + (i.total ?? 0), 0),
       currency:    body.currency ?? 'EUR',
       submittedAt: new Date().toISOString(),
     }

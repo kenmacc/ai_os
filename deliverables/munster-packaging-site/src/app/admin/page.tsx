@@ -11,7 +11,7 @@ type OrderRow = {
   contact_phone: string
   contact_company: string
   contact_notes: string
-  items: { categoryName: string; quantity: number; total: number; fields: Record<string, string>; logoDataUrl?: string }[]
+  items: { categoryName: string; quantity: number; total: number; fields: Record<string, string>; logoDataUrl?: string; logoUrl?: string; logoPath?: string }[]
   subtotal: number
   currency: string
   status: 'new' | 'quoted' | 'confirmed' | 'completed' | 'cancelled'
@@ -260,18 +260,20 @@ export default function AdminPage() {
                           </span>
                         ))}
                       </div>
-                      {item.logoDataUrl && (
+                      {(item.logoUrl || item.logoDataUrl) && (
                         <div className="mt-3 border-t border-gray-100 pt-3">
                           <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Artwork / Logo</p>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src={item.logoDataUrl}
+                            src={item.logoUrl ?? item.logoDataUrl}
                             alt="Customer artwork"
                             className="max-h-32 rounded-lg border border-gray-200 bg-gray-50 object-contain p-2"
                           />
                           <a
-                            href={item.logoDataUrl}
+                            href={item.logoUrl ?? item.logoDataUrl}
                             download="artwork.png"
+                            target="_blank"
+                            rel="noreferrer"
                             className="mt-2 inline-flex items-center gap-1.5 text-xs text-brand-600 hover:underline"
                           >
                             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
