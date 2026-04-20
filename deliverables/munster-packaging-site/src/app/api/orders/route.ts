@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import type { Order } from '@/types'
 import { formatPrice } from '@/lib/pricing'
 import { getCategoryById } from '@/data/products'
+import { supabase } from '@/lib/supabase'
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 // Set these in your .env.local:
@@ -106,6 +107,20 @@ export async function POST(req: NextRequest) {
     if (!order.contact?.email || !order.contact?.name || !order.items?.length) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+
+    // ── Save to Supabase ──────────────────────────────────────────────────────
+    const { error: dbError } = await supabase.from('orders').insert({
+      contact_name:    order.contact.name,
+      contact_email:   order.contact.email,
+      contact_phone:   order.contact.phone ?? null,
+      contact_company: order.contact.company ?? null,
+      contact_notes:   order.contact.notes ?? null,
+      items:           order.items,
+      subtotal:        order.subtotal,
+      currency:        order.currency,
+      status:          'new',
+    })
+    if (dbError) console.error('[orders] Supabase insert error:', dbError)
 
     // ── Send email via nodemailer ─────────────────────────────────────────────
     const nodemailer = await import('nodemailer')
