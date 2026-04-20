@@ -20,9 +20,16 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-gray-900">Products</h3>
             <ul className="mt-4 space-y-2">
-              {['Boxes', 'Partitions', 'Fitments & Foam', 'Bubble Wrap', 'Pallet Wrap', 'Slip Sheets'].map(p => (
-                <li key={p}>
-                  <Link href="/configure" className="text-sm text-gray-500 hover:text-gray-900">{p}</Link>
+              {[
+                { label: 'Boxes',           id: 'boxes' },
+                { label: 'Partitions',      id: 'partitions' },
+                { label: 'Fitments & Foam', id: 'fitments-and-foam' },
+                { label: 'Bubble Wrap',     id: 'bubble-wrap' },
+                { label: 'Pallet Wrap',     id: 'pallet-wrap' },
+                { label: 'Slip Sheets',     id: 'slip-sheets' },
+              ].map(({ label, id }) => (
+                <li key={id}>
+                  <Link href={`/configure?category=${id}`} className="text-sm text-gray-500 hover:text-gray-900">{label}</Link>
                 </li>
               ))}
             </ul>
