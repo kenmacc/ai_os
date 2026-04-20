@@ -20,8 +20,8 @@ export default function Header({ onJoinClick }: Props) {
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
       scrolled ? 'bg-navy/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <Image src="/pv-logo.png" alt="Padel Village" width={120} height={60} className="object-contain" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-10">
+        <Image src="/pv-logo.png" alt="Padel Village" width={90} height={45} className="object-contain" />
         <nav className="hidden items-center gap-8 md:flex">
           {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
             <a key={item} href={`#${item.toLowerCase()}`}
@@ -30,7 +30,7 @@ export default function Header({ onJoinClick }: Props) {
             </a>
           ))}
         </nav>
-        <button onClick={onJoinClick} className="btn-primary py-2.5 text-xs">
+        <button onClick={onJoinClick} className="btn-primary py-2.5 px-4 text-xs">
           Join Waitlist
         </button>
       </div>

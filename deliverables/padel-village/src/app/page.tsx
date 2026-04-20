@@ -52,29 +52,29 @@ export default function Home() {
       <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       {/* HERO */}
-      <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#243250_0%,_#1B273D_60%,_#111928_100%)]" />
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px)' }}
         />
-        <div className="relative z-10 flex flex-col items-center">
-          <Image src="/pv-logo.png" alt="Padel Village" width={160} height={80} className="object-contain mb-10" />
-          <p className="section-label mb-4">Play • Social • Recover</p>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite max-w-4xl leading-none">
+        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl">
+          <Image src="/pv-logo.png" alt="Padel Village" width={120} height={60} className="object-contain mb-8" />
+          <p className="section-label mb-3">Play • Social • Recover</p>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
             Where Champions<br /><span className="text-gold">Come Together</span>
           </h1>
-          <p className="mt-6 text-lg text-offwhite/60 max-w-xl">
+          <p className="mt-5 text-base sm:text-lg text-offwhite/60 max-w-md">
             Cork&apos;s premier indoor padel, social and wellness destination — opening Q4 2027.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <button onClick={() => setModalOpen(true)} className="btn-primary">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
               Claim Your Free Hour
             </button>
-            <a href="#experience" className="btn-outline">
+            <a href="#experience" className="btn-outline w-full sm:w-auto text-center">
               Explore the Village
             </a>
           </div>
-          <p className="mt-8 text-xs text-offwhite/30 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
+          <p className="mt-6 text-xs text-offwhite/30 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <svg className="h-6 w-6 text-gold/50" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -96,8 +96,8 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-24 px-6 bg-offwhite">
-        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+      <section id="about" className="py-16 sm:py-24 px-5 bg-offwhite">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <p className="section-label mb-3">About Padel Village</p>
             <h2 className="section-heading mb-6">More Than a<br />Sports Club</h2>
@@ -116,7 +116,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="relative aspect-square flex items-center justify-center overflow-hidden" style={{ background: '#111928' }}>
+          <div className="hidden lg:flex relative aspect-square items-center justify-center overflow-hidden" style={{ background: '#111928' }}>
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#243250_0%,_#111928_100%)]" />
             <div className="relative z-10 text-center px-8">
               <p className="text-6xl font-bold text-gold mb-2">Q4</p>
@@ -128,8 +128,8 @@ export default function Home() {
       </section>
 
       {/* PILLARS */}
-      <section className="py-24 px-6 bg-navy">
-        <div className="mx-auto max-w-7xl text-center mb-16">
+      <section className="py-16 sm:py-24 px-5 bg-navy">
+        <div className="mx-auto max-w-7xl text-center mb-10 sm:mb-16">
           <p className="section-label mb-3">The Three Pillars</p>
           <h2 className="section-heading-light">Play. Social. Recover.</h2>
         </div>
@@ -151,7 +151,7 @@ export default function Home() {
               body: 'Ice baths, infrared saunas, contrast therapy, and guided recovery sessions — so you can play more, recover faster.',
             },
           ].map(({ label, heading, body }) => (
-            <div key={label} className="bg-navy p-10 flex flex-col items-start">
+            <div key={label} className="bg-navy p-6 sm:p-10 flex flex-col items-start">
               <span className="section-label mb-4">{label}</span>
               <h3 className="text-xl font-bold uppercase tracking-wide text-offwhite mb-3">{heading}</h3>
               <p className="text-offwhite/50 text-sm leading-relaxed">{body}</p>
@@ -161,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* EXPERIENCE GRID */}
-      <section id="experience" className="py-24 px-6 bg-offwhite">
+      <section id="experience" className="py-16 sm:py-24 px-5 bg-offwhite">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <p className="section-label mb-3">The Full Experience</p>
@@ -180,8 +180,8 @@ export default function Home() {
       </section>
 
       {/* CORPORATE */}
-      <section id="corporate" className="py-24 px-6 bg-navy">
-        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+      <section id="corporate" className="py-16 sm:py-24 px-5 bg-navy">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <p className="section-label mb-3">Corporate & Events</p>
             <h2 className="section-heading-light mb-6">Build Your Team<br />On Court</h2>
@@ -191,13 +191,13 @@ export default function Home() {
             <p className="text-offwhite/60 leading-relaxed mb-8">
               From exclusive venue hire to full-day packages with catering and recovery sessions, we&apos;ll build the perfect experience for your team.
             </p>
-            <button onClick={() => setModalOpen(true)} className="btn-primary">
+            <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
               Register Your Interest
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {[['Private Court Hire', 'Exclusive access for your team'], ['Team Tournaments', 'Organised competition with prizes'], ['Catering Packages', 'Village Bar menus & drinks'], ['Recovery Sessions', 'Guided post-event wellness']].map(([t, d]) => (
-              <div key={t} className="bg-navy-800 border border-gold/20 p-6">
+              <div key={t} className="border border-gold/20 p-4 sm:p-6" style={{ background: '#243250' }}>
                 <div className="w-2 h-2 bg-gold mb-4" />
                 <h4 className="text-sm font-bold uppercase tracking-wide text-offwhite mb-1">{t}</h4>
                 <p className="text-xs text-offwhite/40">{d}</p>
@@ -208,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Q4 2027 CTA */}
-      <section className="py-24 px-6 bg-gold">
+      <section className="py-16 sm:py-24 px-5 bg-gold">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-widest text-navy/50 mb-3">Opening Q4 2027</p>
           <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-navy mb-6">
@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT / FOOTER */}
-      <footer id="contact" className="bg-navy-900 py-16 px-6">
+      <footer id="contact" className="py-12 sm:py-16 px-5" style={{ background: '#111928' }}>
         <div className="mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-offwhite/10">
           <div className="lg:col-span-2">
             <Image src="/pv-logo.png" alt="Padel Village" width={120} height={60} className="object-contain mb-4" />
