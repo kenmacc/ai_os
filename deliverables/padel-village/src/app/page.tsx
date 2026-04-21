@@ -209,9 +209,6 @@ export default function Home() {
           <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-navy mb-6">
             Get In First.<br />Play For Free.
           </h2>
-          <p className="text-navy/70 mb-8 max-w-lg mx-auto">
-Get in first.
-          </p>
           <button onClick={() => setModalOpen(true)} className="btn-navy">
             Play For Free
           </button>
