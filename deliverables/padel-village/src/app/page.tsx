@@ -100,12 +100,15 @@ export default function Home() {
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <p className="section-label mb-3">About Padel Village</p>
-            <h2 className="section-heading mb-6">More Than a<br />Sports Club</h2>
+            <h2 className="section-heading mb-6">More Than<br />Just Padel</h2>
             <p className="text-navy/70 leading-relaxed mb-4">
-              Padel Village is being built from the ground up as Cork&apos;s definitive sport, social, and wellness hub. Not just courts — a destination where you play, recover, connect, and come back.
+              Padel Village is a premium indoor destination built around padel, social connection and recovery.
+            </p>
+            <p className="text-navy/70 leading-relaxed mb-4">
+              A flagship concept bringing together high-quality courts, strong atmosphere and premium spaces to play, meet, work, recover and spend time.
             </p>
             <p className="text-navy/70 leading-relaxed mb-8">
-              Whether you&apos;re a seasoned player or picking up a racket for the first time, Padel Village is designed for you. World-class facilities, an unmatched social atmosphere, and a community that keeps you coming back.
+              This is not a standard courts-only facility. It is a modern lifestyle-led venue built around Play &bull; Social &bull; Recover.
             </p>
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-stone">
               {[['6', 'Padel Courts'], ['1', 'Village Bar'], ['∞', 'Community']].map(([num, label]) => (

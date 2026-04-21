@@ -40,8 +40,8 @@ export default function Header({ onJoinClick }: Props) {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 md:flex">
-            {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`}
+            {[['Home', '#'], ['About', '#about'], ['Experience', '#experience'], ['Corporate', '#corporate'], ['Contact', '#contact']].map(([item, href]) => (
+              <a key={item} href={href}
                 className="text-xs font-semibold uppercase tracking-widest text-offwhite/80 transition hover:text-gold">
                 {item}
               </a>
@@ -68,10 +68,10 @@ export default function Header({ onJoinClick }: Props) {
         menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}>
         <nav className="flex flex-col items-center gap-8 pt-12">
-          {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
+          {[['Home', '#'], ['About', '#about'], ['Experience', '#experience'], ['Corporate', '#corporate'], ['Contact', '#contact']].map(([item, href]) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={href}
               onClick={handleNavClick}
               className="text-sm font-semibold uppercase tracking-widest text-offwhite/80 transition hover:text-gold"
             >
