@@ -202,18 +202,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Q4 2027 CTA */}
-      <section className="py-16 sm:py-24 px-5 bg-gold">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-navy/50 mb-3">Opening Q4 2027</p>
-          <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-navy mb-6">
-            Get In First.<br />Play For Free.
-          </h2>
-          <button onClick={() => setModalOpen(true)} className="btn-navy">
-            Play For Free
-          </button>
-        </div>
-      </section>
 
       {/* CONTACT / FOOTER */}
       <footer id="contact" className="py-12 sm:py-16 px-5" style={{ background: '#111928' }}>
