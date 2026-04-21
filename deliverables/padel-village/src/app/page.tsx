@@ -225,9 +225,9 @@ export default function Home() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
+              {[['Home', '#'], ['About', '#about'], ['Experience', '#experience'], ['Corporate', '#corporate'], ['Contact', '#contact']].map(([item, href]) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-sm text-offwhite/40 hover:text-gold transition">{item}</a>
+                  <a href={href} className="text-sm text-offwhite/40 hover:text-gold transition">{item}</a>
                 </li>
               ))}
             </ul>
