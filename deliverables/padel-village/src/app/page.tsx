@@ -83,17 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WAITLIST STRIP */}
-      <section className="bg-gold py-5 px-6">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm font-bold uppercase tracking-widest text-navy text-center sm:text-left">
-            Get In First
-          </p>
-          <button onClick={() => setModalOpen(true)} className="btn-navy shrink-0 py-3 text-xs">
-            Play For Free
-          </button>
-        </div>
-      </section>
 
       {/* ABOUT */}
       <section id="about" className="py-16 sm:py-24 px-5 bg-offwhite">
@@ -202,6 +191,19 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* Q4 2027 CTA */}
+      <section className="py-16 sm:py-24 px-5 bg-gold">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-navy/50 mb-3">Opening Q4 2027</p>
+          <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-navy mb-6">
+            Get In First.<br />Play For Free.
+          </h2>
+          <button onClick={() => setModalOpen(true)} className="btn-navy">
+            Play For Free
+          </button>
+        </div>
+      </section>
 
       {/* CONTACT / FOOTER */}
       <footer id="contact" className="py-12 sm:py-16 px-5" style={{ background: '#111928' }}>
