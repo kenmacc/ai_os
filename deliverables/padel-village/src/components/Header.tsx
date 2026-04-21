@@ -49,11 +49,6 @@ export default function Header({ onJoinClick }: Props) {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Desktop join button */}
-            <button onClick={handleJoinClick} className="btn-primary hidden py-2.5 px-4 text-xs md:inline-flex">
-              Join Waitlist
-            </button>
-
             {/* Hamburger button — mobile only */}
             <button
               onClick={() => setMenuOpen((o: boolean) => !o)}
