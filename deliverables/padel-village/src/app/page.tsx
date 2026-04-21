@@ -87,7 +87,7 @@ export default function Home() {
       <section className="bg-gold py-5 px-6">
         <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm font-bold uppercase tracking-widest text-navy text-center sm:text-left">
-            Early access is open — secure your <span className="underline">free hour of padel</span> today
+            Get In First
           </p>
           <button onClick={() => setModalOpen(true)} className="btn-navy shrink-0 py-3 text-xs">
             Play For Free
