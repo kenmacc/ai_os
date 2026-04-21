@@ -110,14 +110,6 @@ export default function Home() {
             <p className="text-navy/70 leading-relaxed mb-8">
               This is not a standard courts-only facility. It is a modern lifestyle-led venue built around Play &bull; Social &bull; Recover.
             </p>
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-stone">
-              {[['6', 'Padel Courts'], ['1', 'Village Bar'], ['∞', 'Community']].map(([num, label]) => (
-                <div key={label}>
-                  <div className="text-3xl font-bold text-gold">{num}</div>
-                  <div className="text-xs uppercase tracking-widest text-navy/50 mt-1">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
           <div className="hidden lg:flex relative aspect-square items-center justify-center overflow-hidden" style={{ background: '#111928' }}>
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#243250_0%,_#111928_100%)]" />
@@ -252,7 +244,7 @@ export default function Home() {
               <a href="mailto:hello@padelvillage.ie" className="hover:text-gold transition">hello@padelvillage.ie</a>
             </p>
             <button onClick={() => setModalOpen(true)} className="btn-outline mt-6 py-3 text-xs">
-              Join Waitlist
+              Play For Free
             </button>
           </div>
         </div>
