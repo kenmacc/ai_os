@@ -68,7 +68,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
-              Claim Your Free Hour
+              Play For Free
             </button>
             <a href="#experience" className="btn-outline w-full sm:w-auto text-center">
               Explore the Village
@@ -90,7 +90,7 @@ export default function Home() {
             Early access is open — secure your <span className="underline">free hour of padel</span> today
           </p>
           <button onClick={() => setModalOpen(true)} className="btn-navy shrink-0 py-3 text-xs">
-            Join the Waitlist
+            Play For Free
           </button>
         </div>
       </section>
@@ -195,7 +195,7 @@ export default function Home() {
               From exclusive venue hire to full-day packages with catering and recovery sessions, we&apos;ll build the perfect experience for your team.
             </p>
             <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
-              Register Your Interest
+              Play For Free
             </button>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -221,7 +221,7 @@ export default function Home() {
             Join the waitlist now and we&apos;ll give you 1 free hour of padel when we open. No obligation — just early access and the best seat in the village.
           </p>
           <button onClick={() => setModalOpen(true)} className="btn-navy">
-            Claim Your Free Hour
+            Play For Free
           </button>
         </div>
       </section>

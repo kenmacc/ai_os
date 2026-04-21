@@ -90,7 +90,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 />
                 {error && <p className="text-xs text-red-600">{error}</p>}
                 <button type="submit" disabled={loading} className="btn-primary w-full mt-2 disabled:opacity-50">
-                  {loading ? 'Registering…' : 'Join the Waitlist'}
+                  {loading ? 'Registering…' : 'Play For Free'}
                 </button>
               </form>
               <p className="mt-4 text-center text-xs text-navy/40">No spam. No obligation. Just early access.</p>
