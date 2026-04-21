@@ -66,10 +66,10 @@ export default function LeadModal({ isOpen, onClose }: Props) {
             </div>
           ) : (
             <>
-              <p className="section-label text-center mb-2">Exclusive early access</p>
-              <h2 className="text-2xl font-bold uppercase tracking-wide text-navy text-center">Claim Your Free Hour</h2>
+              <p className="section-label text-center mb-2">Get in first</p>
+              <h2 className="text-2xl font-bold uppercase tracking-wide text-navy text-center">Play For Free</h2>
               <p className="mt-2 text-center text-sm text-navy/60">
-                Join the waitlist and get <strong>1 free hour of padel</strong> when we open in Q4 2027.
+                To celebrate our opening, complete your details below and enjoy your first hour on us when Padel Village opens.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-3">
