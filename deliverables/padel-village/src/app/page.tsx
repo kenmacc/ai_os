@@ -210,7 +210,7 @@ export default function Home() {
             Get In First.<br />Play For Free.
           </h2>
           <p className="text-navy/70 mb-8 max-w-lg mx-auto">
-            Join the waitlist now and we&apos;ll give you 1 free hour of padel when we open. No obligation — just early access and the best seat in the village.
+Get in first.
           </p>
           <button onClick={() => setModalOpen(true)} className="btn-navy">
             Play For Free
