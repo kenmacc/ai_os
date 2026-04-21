@@ -57,8 +57,8 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px)' }}
         />
-        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl">
-          <Image src="/pv-logo.png" alt="Padel Village" width={300} height={150} className="object-contain mb-8 w-64 sm:w-80 lg:w-[28rem] h-auto"  />
+        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl pt-20">
+          <Image src="/pv-logo.png" alt="Padel Village" width={300} height={150} className="object-contain mb-6 w-[22rem] sm:w-[32rem] lg:w-[44rem] h-auto"  />
           <p className="section-label mb-3">Play • Social • Recover</p>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
             Where Champions<br /><span className="text-gold">Come Together</span>
