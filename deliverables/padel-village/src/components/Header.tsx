@@ -9,6 +9,7 @@ interface Props {
 
 export default function Header({ onJoinClick }: Props) {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
@@ -16,24 +17,77 @@ export default function Header({ onJoinClick }: Props) {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  const handleNavClick = () => setMenuOpen(false)
+
+  const handleJoinClick = () => {
+    setMenuOpen(false)
+    onJoinClick()
+  }
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      scrolled ? 'bg-navy/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-10">
-        <Image src="/pv-logo.png" alt="Padel Village" width={90} height={45} className="object-contain" />
-        <nav className="hidden items-center gap-8 md:flex">
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled || menuOpen ? 'bg-navy/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      }`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-10">
+          <Image src="/pv-logo.png" alt="Padel Village" width={90} height={45} className="object-contain" />
+
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-8 md:flex">
+            {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`}
+                className="text-xs font-semibold uppercase tracking-widest text-offwhite/80 transition hover:text-gold">
+                {item}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            {/* Desktop join button */}
+            <button onClick={handleJoinClick} className="btn-primary hidden py-2.5 px-4 text-xs md:inline-flex">
+              Join Waitlist
+            </button>
+
+            {/* Hamburger button — mobile only */}
+            <button
+              onClick={() => setMenuOpen((o: boolean) => !o)}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <span className={`block h-0.5 w-6 bg-offwhite transition-all duration-300 ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-offwhite transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-offwhite transition-all duration-300 ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile menu overlay */}
+      <div className={`fixed inset-0 z-30 flex flex-col bg-navy pt-20 transition-all duration-300 md:hidden ${
+        menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}>
+        <nav className="flex flex-col items-center gap-8 pt-12">
           {['About', 'Experience', 'Corporate', 'Contact'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`}
-              className="text-xs font-semibold uppercase tracking-widest text-offwhite/80 transition hover:text-gold">
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={handleNavClick}
+              className="text-sm font-semibold uppercase tracking-widest text-offwhite/80 transition hover:text-gold"
+            >
               {item}
             </a>
           ))}
+          <button onClick={handleJoinClick} className="btn-primary mt-4 py-3 px-8 text-xs">
+            Join Waitlist
+          </button>
         </nav>
-        <button onClick={onJoinClick} className="btn-primary py-2.5 px-4 text-xs">
-          Join Waitlist
-        </button>
       </div>
-    </header>
+    </>
   )
 }
