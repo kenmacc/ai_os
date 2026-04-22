@@ -8,7 +8,7 @@ import LeadModal from '@/components/LeadModal'
 const experiences = [
   {
     title: 'Padel Courts',
-    description: '6 glass-backed championship courts with professional lighting and spectator seating.',
+    description: '12 glass-backed championship courts with professional lighting and spectator seating.',
     icon: '🎾',
   },
   {
@@ -126,7 +126,7 @@ export default function Home() {
             {
               label: 'Play',
               heading: 'World-Class Padel',
-              body: '6 glass-backed championship courts with pro lighting, coaching programmes, and competitive leagues for all levels.',
+              body: '12 glass-backed championship courts with pro lighting, coaching programmes, and competitive leagues for all levels.',
             },
             {
               label: 'Social',
