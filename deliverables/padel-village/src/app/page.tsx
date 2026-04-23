@@ -53,10 +53,8 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-5 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#243250_0%,_#1B273D_60%,_#111928_100%)]" />
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, #B59A63 39px, #B59A63 40px)' }}
-        />
+        <div className="absolute inset-0 opacity-75 bg-cover bg-center" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1B273D44_0%,_#111928aa_100%)]" />
         <div className="relative z-10 flex flex-col items-center w-full max-w-4xl">
           <Image src="/pv-logo.png" alt="Padel Village" width={300} height={150} className="object-contain mb-8 w-64 sm:w-80 lg:w-[28rem] h-auto"  />
           <p className="section-label mb-3">Play • Social • Recover</p>
