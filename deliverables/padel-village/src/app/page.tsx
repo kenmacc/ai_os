@@ -53,7 +53,8 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        <div className="absolute inset-0 opacity-75 bg-cover bg-center" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
+        <div className="absolute inset-0 opacity-75 bg-cover bg-center md:hidden" style={{ backgroundImage: 'url(/Hero%20for%20MOBILE%20VIEW.png)' }} />
+        <div className="absolute inset-0 opacity-75 bg-cover bg-center hidden md:block" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1B273D44_0%,_#111928aa_100%)]" />
         <div className="relative z-10 flex flex-col items-center w-full max-w-5xl pt-12 pb-20">
           <Image
