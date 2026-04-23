@@ -79,7 +79,7 @@ export default function Header({ onJoinClick }: Props) {
             </a>
           ))}
           <button onClick={handleJoinClick} className="btn-primary mt-4 py-3 px-8 text-xs">
-            Join Waitlist
+            Play For Free
           </button>
         </nav>
       </div>
