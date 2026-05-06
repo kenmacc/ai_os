@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function LeadModal({ isOpen, onClose }: Props) {
-  const [form, setForm] = useState({ name: '', email: '', mobile: '' })
+  const [form, setForm] = useState({ name: '', email: '', mobile: '', userType: '', organisation: '' })
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
@@ -50,7 +50,9 @@ export default function LeadModal({ isOpen, onClose }: Props) {
           </button>
 
           <div className="flex justify-center mb-6">
-            <Image src="/pv-logo.png" alt="Padel Village" width={100} height={50} className="object-contain" />
+            <div className="bg-navy px-6 py-3 rounded-sm">
+              <Image src="/pv-logo.png" alt="Padel Village" width={160} height={80} className="object-contain" />
+            </div>
           </div>
 
           {submitted ? (
@@ -68,8 +70,9 @@ export default function LeadModal({ isOpen, onClose }: Props) {
             <>
               <p className="section-label text-center mb-2">Get in first</p>
               <h2 className="text-2xl font-bold uppercase tracking-wide text-navy text-center">Play For Free</h2>
+              <p className="mt-1 text-center text-xs font-semibold uppercase tracking-widest text-gold">UCC Students & Staff: Play For Free</p>
               <p className="mt-2 text-center text-sm text-navy/60">
-                To celebrate our opening, complete your details below and enjoy your first hour on us when Padel Village opens.
+                Complete your details below and enjoy your first hour on us if Padel Village progresses.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-3">
@@ -86,6 +89,25 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 <input
                   type="tel" placeholder="Mobile Number"
                   value={form.mobile} onChange={e => setForm(p => ({ ...p, mobile: e.target.value }))}
+                  className="input"
+                />
+                <select
+                  required
+                  value={form.userType} onChange={e => setForm(p => ({ ...p, userType: e.target.value }))}
+                  className="input text-navy/60"
+                >
+                  <option value="" disabled>User Type</option>
+                  <option value="UCC Student">UCC Student</option>
+                  <option value="UCC Staff">UCC Staff</option>
+                  <option value="Mardyke Member">Mardyke Member</option>
+                  <option value="Club or Society">Club or Society</option>
+                  <option value="Alumni">Alumni</option>
+                  <option value="Community Partner">Community Partner</option>
+                  <option value="Public User">Public User</option>
+                </select>
+                <input
+                  type="text" placeholder="Course / Department / Organisation"
+                  value={form.organisation} onChange={e => setForm(p => ({ ...p, organisation: e.target.value }))}
                   className="input"
                 />
                 {error && <p className="text-xs text-red-600">{error}</p>}

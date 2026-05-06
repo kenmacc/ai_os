@@ -53,58 +53,33 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        <div className="absolute inset-0 opacity-75 bg-cover bg-center md:hidden" style={{ backgroundImage: 'url(/Hero%20for%20MOBILE%20VIEW.png)' }} />
-        <div className="absolute inset-0 opacity-75 bg-cover bg-center hidden md:block" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1B273D44_0%,_#111928aa_100%)]" />
-        <div className="relative z-10 flex flex-col items-center w-full max-w-5xl pt-12 pb-20">
-          <p className="section-label mb-4">Play • Social • Recover</p>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
-            Where Champions<br /><span className="text-gold">Come Together</span>
-          </h1>
-          <p className="mt-5 text-base sm:text-lg text-offwhite/60 max-w-lg">
-            Cork&apos;s premier indoor padel, social and wellness destination — opening Q4 2027.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
-              Play For Free
-            </button>
-            <a href="#experience" className="btn-outline w-full sm:w-auto text-center">
-              Explore the Village
-            </a>
+        <div className="absolute inset-0 bg-cover bg-center md:hidden" style={{ backgroundImage: 'url(/Hero%20for%20MOBILE%20VIEW.png)' }} />
+        <div className="absolute inset-0 bg-cover bg-center hidden md:block" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
+        <div className="absolute inset-0 bg-navy/55" />
+        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl pt-12 pb-20">
+          <div className="bg-navy/60 backdrop-blur-sm px-8 py-10 sm:px-12 sm:py-14 rounded-sm max-w-3xl w-full">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
+              Play Padel.<br />Meet People.<br /><span className="text-gold">Feel Better.</span>
+            </h1>
+            <p className="section-label mt-5">Play • Social • Recover</p>
+            <p className="mt-6 text-base sm:text-xl text-offwhite/90 max-w-2xl mx-auto leading-relaxed">
+              A 12-court indoor padel, social and recovery hub for UCC students, staff, Mardyke members and the wider community.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+              <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
+                Play For Free
+              </button>
+              <a href="#experience" className="btn-outline w-full sm:w-auto text-center">
+                Explore the Village
+              </a>
+            </div>
           </div>
-          <p className="mt-8 text-xs text-offwhite/30 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
+          <p className="mt-8 text-xs text-offwhite/40 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <svg className="h-6 w-6 text-gold/50" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
           </svg>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="py-20 sm:py-28 px-6 bg-offwhite">
-        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <p className="section-label mb-3">About Padel Village</p>
-            <h2 className="section-heading mb-6">More Than<br />Just Padel</h2>
-            <p className="text-navy/70 leading-relaxed mb-4">
-              Padel Village is a premium indoor destination built around padel, social connection and recovery.
-            </p>
-            <p className="text-navy/70 leading-relaxed mb-4">
-              A flagship concept bringing together high-quality courts, strong atmosphere and premium spaces to play, meet, work, recover and spend time.
-            </p>
-            <p className="text-navy/70 leading-relaxed">
-              This is not a standard courts-only facility. It is a modern lifestyle-led venue built around Play &bull; Social &bull; Recover.
-            </p>
-          </div>
-          <div className="hidden lg:flex relative aspect-square items-center justify-center overflow-hidden" style={{ background: '#111928' }}>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#243250_0%,_#111928_100%)]" />
-            <div className="relative z-10 text-center px-8">
-              <p className="text-7xl font-bold text-gold mb-2">Q4</p>
-              <p className="text-8xl font-bold text-offwhite">2027</p>
-              <p className="mt-4 text-xs uppercase tracking-widest text-offwhite/40">Opening — Cork, Ireland</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -118,24 +93,51 @@ export default function Home() {
           {[
             {
               label: 'Play',
-              heading: 'World-Class Padel',
-              body: '12 glass-backed championship courts with pro lighting, coaching programmes, and competitive leagues for all levels.',
+              icon: '🎾',
+              heading: '12 indoor courts designed for year-round play',
+              body: 'For beginners, social players, students, staff, clubs, societies, Mardyke members and regular players.',
+              bullets: [
+                'Beginner sessions and coaching',
+                'Student, staff and society leagues',
+                'Social games and year-round indoor play',
+              ],
             },
             {
               label: 'Social',
-              heading: 'The Village Bar',
-              body: 'Post-match drinks, live sport, performance nutrition, and a social scene built around the game you love.',
+              icon: '☕',
+              heading: 'A place to connect before and after play',
+              body: 'A warm social hub with the Village Café, food, screens, mezzanine viewing, study / work areas and free Wi-Fi.',
+              bullets: [
+                'Village Café / food',
+                'Mezzanine viewing and live sport',
+                'Study, work and social spaces',
+              ],
             },
             {
               label: 'Recover',
-              heading: 'Premium Wellness',
-              body: 'Ice baths, infrared saunas, contrast therapy, and guided recovery sessions — so you can play more, recover faster.',
+              icon: '❄️',
+              heading: 'Active wellbeing, recovery and support services',
+              body: 'Recovery and wellbeing spaces designed to support movement, stress reduction, injury prevention and better recovery.',
+              bullets: [
+                'Plunge pools, cold-water baths and sauna',
+                'Physio, massage and acupuncture',
+                'Mobility, treatment and wellbeing rooms',
+              ],
             },
-          ].map(({ label, heading, body }) => (
+          ].map(({ label, icon, heading, body, bullets }) => (
             <div key={label} className="bg-navy p-8 sm:p-10 flex flex-col items-start">
-              <span className="section-label mb-4">{label}</span>
-              <h3 className="text-lg font-bold uppercase tracking-wide text-offwhite mb-3">{heading}</h3>
-              <p className="text-offwhite/50 text-sm leading-relaxed">{body}</p>
+              <div className="text-4xl mb-4">{icon}</div>
+              <span className="section-label mb-3">{label}</span>
+              <h3 className="text-base font-bold uppercase tracking-wide text-offwhite mb-3 leading-snug">{heading}</h3>
+              <p className="text-offwhite/50 text-sm leading-relaxed mb-5">{body}</p>
+              <ul className="space-y-2 mt-auto">
+                {bullets.map(b => (
+                  <li key={b} className="flex items-start gap-2 text-xs text-offwhite/60">
+                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -147,6 +149,8 @@ export default function Home() {
           <div className="text-center mb-12 sm:mb-16">
             <p className="section-label mb-3">The Full Experience</p>
             <h2 className="section-heading">Everything Under One Roof</h2>
+            <p className="mt-4 text-navy/60 max-w-xl mx-auto">Play, social connection and recovery in one connected destination.</p>
+            <p className="mt-4 text-navy/60 max-w-3xl mx-auto text-left">Padel Village is designed as a year-round indoor participation hub where people can play, connect, recover, study, work and spend time. The concept brings together premium indoor courts, a warm social space, recovery and wellbeing services, free Wi-Fi, free parking and a mezzanine viewing gallery in one active campus destination.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {experiences.map(({ title, description, icon }) => (
@@ -239,6 +243,9 @@ export default function Home() {
         <div className="mx-auto max-w-6xl pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-offwhite/20">© 2027 Padel Village. All rights reserved.</p>
           <p className="text-xs text-offwhite/20">Play • Social • Recover</p>
+        </div>
+        <div className="mx-auto max-w-6xl pt-4 text-center">
+          <p className="text-xs text-offwhite/20 italic">This concept is subject to feasibility, UCC review and approval.</p>
         </div>
       </footer>
     </>

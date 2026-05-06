@@ -32,9 +32,7 @@ export default function Header({ onJoinClick }: Props) {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled || menuOpen ? 'bg-navy/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}>
+      <header className="fixed top-0 left-0 right-0 z-40 bg-navy/95 backdrop-blur-sm shadow-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-10">
           <Image src="/pv-logo.png" alt="Padel Village" width={90} height={45} className="object-contain" />
 
