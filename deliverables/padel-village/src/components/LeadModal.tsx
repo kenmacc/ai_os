@@ -38,25 +38,26 @@ export default function LeadModal({ isOpen, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-navy/80 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-md bg-offwhite shadow-2xl">
-        {/* Gold top bar */}
-        <div className="h-1 w-full bg-gold" />
-
-        <div className="p-8">
-          <button onClick={onClose} className="absolute right-5 top-5 text-stone hover:text-navy transition">
+      <div className="relative w-full max-w-md bg-offwhite shadow-2xl flex flex-col max-h-[92vh]">
+        {/* Gold top bar + close button — always visible */}
+        <div className="flex-shrink-0 relative">
+          <div className="h-1 w-full bg-gold" />
+          <button onClick={onClose} className="absolute right-4 top-3 text-stone hover:text-navy transition z-10">
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
+        </div>
 
-          <div className="flex justify-center mb-6">
+        <div className="p-6 sm:p-8 overflow-y-auto">
+          <div className="flex justify-center mb-4 sm:mb-6">
             <div className="bg-navy px-6 py-3 rounded-sm">
               <Image src="/pv-logo.png" alt="Padel Village" width={160} height={80} className="object-contain" />
             </div>
           </div>
 
           {submitted ? (
-            <div className="text-center py-4">
+            <div className="text-center py-2">
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold">
                 <svg className="h-7 w-7 text-gold" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -75,7 +76,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 Complete your details below and enjoy your first hour on us if Padel Village progresses.
               </p>
 
-              <form onSubmit={handleSubmit} className="mt-6 space-y-3">
+              <form onSubmit={handleSubmit} className="mt-4 space-y-2.5">
                 <input
                   type="text" required placeholder="Full Name"
                   value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
