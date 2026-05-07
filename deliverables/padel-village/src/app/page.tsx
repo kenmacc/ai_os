@@ -52,20 +52,20 @@ export default function Home() {
       <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       {/* HERO */}
-      <section className="relative min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      <section className="relative min-h-[75vh] sm:min-h-screen bg-navy flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center md:hidden" style={{ backgroundImage: 'url(/Hero%20for%20MOBILE%20VIEW.png)' }} />
         <div className="absolute inset-0 bg-cover bg-center hidden md:block" style={{ backgroundImage: 'url(/Hero%20for%20LAPTOP%20VIEW.png)' }} />
         <div className="absolute inset-0 bg-navy/55" />
-        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl pt-12 pb-20">
-          <div className="bg-navy/60 backdrop-blur-sm px-8 py-10 sm:px-12 sm:py-14 rounded-sm max-w-3xl w-full">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
+        <div className="relative z-10 flex flex-col items-center w-full max-w-4xl pt-20 pb-10 sm:pt-12 sm:pb-20">
+          <div className="bg-navy/60 backdrop-blur-sm px-6 py-7 sm:px-12 sm:py-14 rounded-sm max-w-3xl w-full">
+            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-offwhite leading-[1.05]">
               Play Padel.<br />Meet People.<br /><span className="text-gold">Feel Better.</span>
             </h1>
-            <p className="section-label mt-5">Play • Social • Recover</p>
-            <p className="mt-6 text-base sm:text-xl text-offwhite/90 max-w-2xl mx-auto leading-relaxed">
+            <p className="section-label mt-4">Play • Social • Recover</p>
+            <p className="mt-4 text-sm sm:text-xl text-offwhite/90 max-w-2xl mx-auto leading-relaxed">
               A 12-court indoor padel, social and recovery hub for UCC students, staff, Mardyke members and the wider community.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
               <button onClick={() => setModalOpen(true)} className="btn-primary w-full sm:w-auto">
                 Play For Free
               </button>
@@ -74,7 +74,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <p className="mt-8 text-xs text-offwhite/40 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
+          <p className="mt-5 sm:mt-8 text-xs text-offwhite/40 uppercase tracking-widest">Coming Q4 2027 — Cork, Ireland</p>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <svg className="h-6 w-6 text-gold/50" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
